@@ -16,6 +16,7 @@ The primary goals of this project are:
 
 The directory structure is organized to promote best practices and modularity:
 
+```
 .
 ├── ansible.cfg                          # Global Ansible configuration settings
 ├── bootstrap                            # Scripts to prepare a clean server for Ansible
@@ -36,7 +37,7 @@ The directory structure is organized to promote best practices and modularity:
 │   ├── change_primary_ansible_user_password.yml
 │   └── create_secondary_ansible_user.yml
 └── roles                                # Placeholder for reusable role definitions
-
+```
 
 ## Getting Started
 
