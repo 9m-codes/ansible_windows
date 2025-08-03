@@ -1,0 +1,25 @@
+---
+windows_servers:
+  hosts:
+    windows-server-01:
+      ansible_host: 10.9.2.10
+      ansible_user: ansible_svc
+      ansible_password: "{{ vault_windows_password }}"
+      ansible_connection: winrm
+      ansible_winrm_transport: basic
+      ansible_winrm_scheme: https
+      ansible_winrm_port: 5986
+      ansible_winrm_server_cert_validation: validate
+      ansible_winrm_read_timeout_sec: 60
+      ansible_winrm_operation_timeout_sec: 59
+
+  vars:
+    ansible_winrm_connection_timeout: 60
+    ansible_winrm_read_timeout_sec: 60
+    ansible_winrm_operation_timeout_sec: 59
+
+    # No global become — use runas only when needed in playbooks
+    # Example:
+    #   become: yes
+    #   become_method: runas
+    #   become_user: local_admin

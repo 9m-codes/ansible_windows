@@ -1,0 +1,42 @@
+---
+- name: Create secondary service account
+  hosts: windows-server-01
+  gather_facts: no
+
+  collections:
+    - ansible.windows
+
+  # Define the connection user for this playbook at the play level
+  vars:
+    ansible_user: "{{ ansible_primary_username }}" # Connect using the primary account from inventory vars
+
+  tasks:
+    - name: Load primary vault for connection
+      include_vars:
+        file: ../.secrets/primary_vault.yml
+        name: primary_cred
+
+    - name: Set connection password for primary service account
+      set_fact:
+        ansible_password: "{{ primary_cred.vault_windows_password }}"
+
+    - name: Ping the target host to verify connection
+      ansible.windows.win_ping:
+
+    - name: Load secondary vault for new user password
+      include_vars:
+        file: ../.secrets/secondary_vault.yml
+        name: secondary_cred
+
+    - name: Create Ansible secondary svc account
+      ansible.windows.win_user:
+        name: "{{ ansible_secondary_username }}" # Now dynamic from inventory!
+        password: "{{ secondary_cred.vault_windows_password }}"
+        groups:
+          - Administrators
+        password_never_expires: yes
+        state: present
+        update_password: on_create
+      become: yes
+      become_method: runas
+      become_user: "{{ ansible_user }}" # This will resolve to ansible_primary_username

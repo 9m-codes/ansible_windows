@@ -1,0 +1,7 @@
+# Global inventory variables
+# Applied to all hosts — keep minimal and safe
+
+all:
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    log_folder: /var/log/ansible
