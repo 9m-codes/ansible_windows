@@ -23,7 +23,7 @@ The directory structure is organized to promote best practices and modularity:
 │   ├── powershell
 │   │   └── bootstrap-winrm.ps1          # PowerShell script to enable WinRM and create the initial bootstrap user
 │   └── shell
-│       └── ansible_bootstrap.sh         # Wrapper script to run the PowerShell bootstrap (optional)
+│       └── ansible_bootstrap.sh         # This script setup Ansible Controller and Code Server IDE on Almalinux 10 (should work on RHEL 9/10 based Linuc)
 ├── collections                          # Ansible collections and roles dependencies
 │   └── requirements.yml
 ├── inventory                            # Inventory files organized by environment and purpose
