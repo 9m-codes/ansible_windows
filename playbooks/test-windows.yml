@@ -1,0 +1,19 @@
+---
+- name: Test Windows connectivity
+  hosts: windows_servers
+  gather_facts: yes
+
+  vars_files:
+    - ../.secrets/vault.yml
+  
+  tasks:
+    - name: Test connectivity
+      win_ping:
+
+    - name: Get hostname
+      win_shell: hostname
+      register: hostname_result
+
+    - name: Display hostname
+      debug:
+        msg: "Connected to: {{ hostname_result.stdout }}"
