@@ -2,15 +2,13 @@
 
 This repository contains the necessary files to automate the initial bootstrapping and ongoing management of Windows servers using Ansible. The workflow is designed for security and scalability, starting with a temporary bootstrap account and immediately transitioning to a dedicated, managed service account.
 
-The primary goals of this project are:
+The primary goals of this demo:
 
 * **Idempotent Provisioning:** Safely run tasks multiple times without causing unintended side effects.
 
-* **Centralized Configuration:** Manage server configurations from a central location.
-
 * **Secure Secrets Management:** Use Ansible Vault to encrypt sensitive data like passwords.
 
-* **Dynamic Inventory:** Separate host-specific data from playbooks for reusability.
+* **Inventory Structure:** Separate host-specific data from playbooks for reusability.
 
 ## Project Structure
 
