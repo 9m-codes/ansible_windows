@@ -43,7 +43,7 @@ The directory structure is organized to promote best practices and modularity:
 
 ### Prerequisites
 
-* Ansible installed on your control node.
+* Ansible installed on your control node. Use ansible_bootstrap.sh to bootstrap and Ansible Control node.
 
 * A pre-shared vault password file (`.vault_pass`) in the root directory.
 
